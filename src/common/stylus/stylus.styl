@@ -1,0 +1,203 @@
+body
+    font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,Arial,sans-serif;
+    line-height: 1.5
+    max-width: 1080px;
+    margin: 0 auto;
+html, body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 
+    -webkit-text-size-adjust:none;
+
+  
+@media screen and (min-width: 780px)
+   html     
+        font-size: 30px !important
+/**顶部***/
+#swiper_header
+    width: 100%
+    max-width: 1080px;
+    height: 1.8rem
+    position: fixed  
+    z-index: 998
+    top:1.8rem
+    background:#f4f5f6
+    color:#000
+    display:flex
+    white-space: nowrap
+    overflow-x:auto
+  ::-webkit-scrollbar
+    display: none 
+  .swiper_slide
+    text-align center
+    font-size .8rem
+    line-height:1.8rem
+    margin auto 15px
+    a
+      padding-bottom:5px
+      &.active
+        color #d20000
+        position relative
+        &:after
+          position absolute
+          display block
+          bottom  0
+          content ""
+          width 100%
+          border-bottom  1px solid #DC4669
+          transform  scale(1,0.4)
+/****/
+.head_banner
+    height: 6rem !important
+    margin-top: 3.6rem
+    .img_wid
+        width:100%
+        height: 100%
+/**.loading**/
+.loading
+    position: absolute
+    left: 49%
+    line-height: 20rem
+.loading_fo
+    display: flex
+    justify-content: center
+    margin-bottom: 2.5rem
+.loading_fo_t
+    font-size: 13px;
+    line-height: 30px;
+    padding-left: 15px;
+/**go_top**/
+.go_top
+    background: #d43d3d
+    position: fixed
+    text-align: center
+    bottom: 2.5rem
+    right: 20px
+    width: 50px
+    height: 50px
+    font-size: 18px
+    border-radius: 50%
+    color: #fff
+    line-height: 50px
+    z-index: 999
+    animation:bounce 1s
+    transform-origin:center bottom
+    @keyframes bounce
+        0%, 20%, 53%, 80%, 100% 
+            animation-timing-function:cubic-bezier(.215,.61,.355,1)
+            transform:translateZ(0)
+        40%, 43%
+            animation-timing-function:cubic-bezier(.755,.05,.855,.06)
+            transform: translate3d(0,-30px,0)
+        70%
+            animation-timing-function:cubic-bezier(.755,.05,.855,.06)
+            transform: translate3d(0,-15px,0)
+        90%
+            transform: translate3d(0,-4px,0)
+
+/**head***/
+.nav_top_wrapper
+    background: #d43d3d
+    height: 1.8rem
+    line-height: 1.6rem
+    .nav_top
+        padding-left: 15px
+    .search
+        display: inline-block
+        float: right
+        padding: .4rem
+    .search_news
+        font-size: .6rem
+        line-height: 1.2rem
+        border-radius: 20px
+        padding-left: 8px
+        width: 85%
+/***content: **/
+.new_list
+    display: block 
+    margin:0 7px  
+    position: relative
+    -webkit-transform-style: preserve-3d     /*设置内嵌的元素在 3D 空间如何呈现：保留 3D*/
+    -webkit-backface-visibility: hidden;/*（设置进行转换的元素的背面在面对用户时是否可见：隐藏）*/
+    &:after
+        content: ""
+        position: absolute
+        width: 100%
+        display: block
+        transform: scale(1,0.5)
+        border-bottom: 1px solid rgb(234, 234, 234);
+        bottom: 0
+    .list_wra
+        display: flex
+        padding: 7px 3px
+        .list_img
+            width: 5rem;
+            height: 3.5rem;
+        img[lazy=loading]
+            background: rgb(234, 234, 234);             
+        .list_tit
+            flex: 1
+            font-size: .8rem
+            line-height: 1rem
+            padding-left: 10px
+            p
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow : hidden;
+                text-overflow: ellipsis;
+                text-align: -webkit-auto
+            .tit_h
+                color: #000 
+            .list_text
+                display: flex
+                margin-top: .6rem
+                p
+                    font-size: .6rem
+                    flex:1
+                    &.text_l                 
+                        text-align: left
+                    &.text_r
+                        text-align: right
+                        
+/**foot***/
+.foot_nav
+    background: #f4f5f6
+    ul
+        display: flex
+        li
+            flex: 1
+            text-align: center
+            a
+                display: block
+                line-height: 1.2
+                &.active
+                    
+                    color: #D20000     
+                .icon              
+                    padding: 3px 0
+                .nav_font
+                    font-size: .5rem
+/**user_component**/            
+.user_head
+    display: flex
+    justify-content: space-between
+    margin: .8rem .5rem
+    vertical-align: middle
+    .user_id
+        display: inline-block;
+        font-size: 18px
+        line-height: 22px
+        p
+           font-size: 14px 
+           span.thin-border   
+                position: relative
+                color:rgb(247, 228, 95)
+                &:before
+                    content: '';
+                    position: absolute;
+                    width: 200%;
+                    height: 200%;
+                    border: 1px solid #d43d3d;
+                    transform-origin: 0 -39%;
+                    transform: scale(0.5, 0.69);
+                    box-sizing: border-box;
+                    top:0
+                
