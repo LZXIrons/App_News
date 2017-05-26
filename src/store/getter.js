@@ -9,7 +9,6 @@ export default{
     watch_video:state=>state.watch_video,
     watch_news:state=>state.watch_news,
     video_list:state=>state.video_list,
-    change_router:state=>state.change_router,
     return_data:state=>state.return_data,
 
 }

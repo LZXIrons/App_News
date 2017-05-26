@@ -3,7 +3,7 @@
         <div class="foot_nav" slot="foot_nav">
             <ul>
                 <li  >
-                    <router-link  to="/news/">
+                    <router-link  to="/news/recommend?nav=__all__" :class="{active:Addclass}">
                         <div class="icon">
                             <i class="icon-home"></i>
                         </div>
@@ -11,7 +11,7 @@
                     </router-link>
                 </li>
                 <li  >
-                    <router-link to="/video/recommend?nav=Video_Recom" >
+                    <router-link to="/video/recommend?nav=Video_Recom" :class="{active:css_video}">
                         <div class="icon">
                             <i class="icon-video"></i>
                         </div>
@@ -48,6 +48,7 @@
 
             }
         },
+        props: ['Addclass', 'css_video'],
         components: {
             foot
         },
@@ -55,12 +56,7 @@
 
         },
         methods: {
-            go_Nav(){
-                this.$router.push("/news/recommend?nav=__all__")
-            },
-            go_Video(){
-                this.$router.push("/video/recommend?nav=Video_Recom")
-            },
+
             sorry() {
                Toast(
                     {
@@ -70,7 +66,10 @@
                 )
               
             }
-        }
+        },
     }
 
 </script>
+<style>
+
+</style>

@@ -7,9 +7,10 @@
             </mt-header>
         </head_top>
         <video_nav></video_nav>
-        <el-row type="flex" justify="space-between" class="El_row">
-            <el-col :span="11" v-for="(item, index) in video_list" :key="index" class="El_col">
-                <router-link :to="{'name':'video_con','params':{
+        <transition enter-active-class="zoomIn" leave-active-class="zoomOut">
+            <el-row type="flex" justify="space-between" class="El_row animated" v-show="!loading">
+                <el-col :span="11" v-for="(item, index) in video_list" :key="index" class="El_col">
+                    <router-link :to="{'name':'video_con','params':{
                     id:item.topicSid,
                     url:item.mp4_url,
                     replyCount:item.replyCount,
@@ -19,25 +20,26 @@
                     watch_num:item.playCount,
 
                 }}" class="El_route">
-                    <el-card class="box_wra" :body-style="{ padding: '0px' }">
-                        <img v-lazy="item.cover" class="image">
-                        <div style="padding: 10px;">
-                            <p class="text_desc" style="-webkit-box-orient: vertical">{{item.title}}</p>
-                            <div class="bottom clearfix">
-                                <time class="time">{{ item.ptime |date }}</time>
-                                <el-button type="text" class="button">观看</el-button>
+                        <el-card class="box_wra" :body-style="{ padding: '0px' }">
+                            <img v-lazy="item.cover" class="image">
+                            <div style="padding: 10px;">
+                                <p class="text_desc" style="-webkit-box-orient: vertical">{{item.title}}</p>
+                                <div class="bottom clearfix">
+                                    <time class="time">{{ item.ptime |date }}</time>
+                                    <el-button type="text" class="button">观看</el-button>
+                                </div>
                             </div>
-                        </div>
-                    </el-card>
-                    </router-link>
-            </el-col>
-        </el-row>
+                        </el-card>
+                        </router-link>
+                </el-col>
+            </el-row>
+        </transition>
         <mt-spinner type="triple-bounce" color="red" v-show="loading" class="loading"></mt-spinner>
         <div class="loading_fo" v-if="!loading">
             <mt-spinner type="fading-circle" color="red"></mt-spinner>
             <span class="loading_fo_t"> 拼命加载中</span>
         </div>
-        <foot_bottom></foot_bottom>
+        <foot_bottom :css_video='Isactive'></foot_bottom>
     </div>
 </template>
 
@@ -52,6 +54,7 @@
         data() {
             return {
                 nav_video: 'Video_Recoms',
+                Isactive:true,
             }
         },
         computed: {
@@ -64,41 +67,43 @@
         methods: {
             ...mapActions([
                 'get_video',
-            'Scr_get_video'
-            ])
+            
+            ]),
+
         },
         created() {
+            //初始化数据
+            this.$store.commit(type.LOADING, true)
             let temp
             let history
             if (window.sessionStorage.temp) {
                 temp = JSON.parse(window.sessionStorage.temp)
             }
             history = this.$route.query.v_nav || 'Video_Recoms'
-            if (temp && temp.nav == history) {
+            if (temp && temp.nav === history) {
                 this.video_list = temp.video_list
                 this.nav_video = temp.nav
                 this.$nextTick(() => {
                     $(window).scrollTop(temp.scrollTop)
                 })
+                this.$store.commit(type.LOADING, false)
                 console.log('已有记录')
             } else {
+                this.$store.commit(type.VIDEO_RES, [])
                 this.get_video({
                     nav_video: this.nav_video,
                 })
+                console.log('初始化数据')
             }
-            this.$store.commit(type.WATCH_VIDEO, true)
-            this.$store.commit(type.LOADING, false)
+
         },
         mounted() {
-
-            console.log(this.$route.query.v_nav)
-            /*滚动加载数据*/
             $(window).on('scroll', () => {
                 let wh = $(window).height()
                 let sh = $(window).scrollTop()
                 console.log(this.watch_video)
                 if ($(document).height() < (wh + sh + 20) && this.watch_video) {
-                    this.Scr_get_video({
+                    this.get_video({
                         nav_video: this.$route.query.v_nav || this.nav_video,
                     })
                     console.log('进入视频获取流程')
@@ -108,11 +113,13 @@
 
         watch: {
             $route(to, from) {
-                console.log(this.$route.query.v_nav)
-                this.$store.commit(type.VIDEO_RES, [])
                 this.get_video({
-                    nav_video: this.$route.query.v_nav
+                    nav_video: this.$route.query.v_nav,
                 })
+                this.$store.commit(type.LOADING, true)
+                this.$store.commit(type.VIDEO_RES, [])
+                console.log('进入视频切换流程')
+                console.log(this.$route.query.v_nav)
             }
         },
         components: {
@@ -129,6 +136,7 @@
         beforeRouteEnter: (to, from, next) => {
             if (from.name !== 'video_con') {
                 window.sessionStorage.removeItem('temp')
+                 console.log('删除视频数据')
             }
             next()
         },
@@ -138,7 +146,7 @@
             window.sessionStorage.temp = JSON.stringify({
                 scrollTop: $(window).scrollTop(),
                 video_list: this.video_list,
-                nav: this.$route.query.v_nav ||this.nav_video
+                nav: this.$route.query.v_nav || this.nav_video
             })
             next()
         }
@@ -178,17 +186,20 @@
         height: 1.8rem;
         font-size: .7rem
     }
-    .El_row{
-        flex-wrap:wrap;
-        padding:15px;
-        margin-top:3rem
+    
+    .El_row {
+        flex-wrap: wrap;
+        padding: 15px;
+        margin-top: 3rem
     }
-    .El_route{
+    
+    .El_route {
         display: inline-block;
         width: 100%;
         height: 100%;
     }
-    .El_col{
-    max-width: 330px !important;
+    
+    .El_col {
+        max-width: 330px !important;
     }
 </style>

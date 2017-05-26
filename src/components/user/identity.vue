@@ -9,7 +9,7 @@
             <div>
                 <router-link class="user_head" :to="{'path':'/app/user'}">
                     <div class="user_block">
-                        <img src="../../common/img/男头像.png" width="40px" />
+                        <img src="../../common/img/man.png" width="40px" />
                         <div class="user_id">
                             <span>{{userName}}</span>
                             <p>
@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="login_bef" v-else>
-            <img src="../../common/img/男头像.png" width="25px" height="20px"/>
+            <img src="../../common/img/man.png" width="25px" height="20px"/>
             <router-link class='loging' :to="{'name':'login'}">
                 请登陆
             </router-link>

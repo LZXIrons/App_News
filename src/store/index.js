@@ -15,7 +15,6 @@ const state = {
         watch_news:true,               //显示观看视频
         video_list:[],                   //视频数据
         topics:[]  ,                 //新闻列表数据
-        change_router:true,              //改变路由标志
         return_data:true ,                 //确认是否有数据返回                  
         
 }

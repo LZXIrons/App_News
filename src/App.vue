@@ -3,8 +3,7 @@
     <transition :name="transitionName" mode='out-in'>
        
           <router-view v-cloak class="active_view"></router-view>   
-<!--          <keep-alive>
-        </keep-alive>-->
+
     </transition>
   </div>
   

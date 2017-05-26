@@ -97,15 +97,6 @@ export default new Router({
       name: 'zc',
       component: zc
     },
-    {
-        path: '/news',
-        name: 'news',
-        redirect: '/news/recommend?nav=__all__'
-    },
-     {
-        path: '/video',
-        name: 'video',
-        redirect: '/video/recommend?nav=Video_Recom'
-    },
+
   ],
 })

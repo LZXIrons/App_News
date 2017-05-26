@@ -19,7 +19,7 @@
         </div>
       </div>
     </div>
-    <foot_bottom></foot_bottom>
+    <foot_bottom :css_video='Isactive'></foot_bottom>
   </div>
 </template>
 
@@ -30,6 +30,7 @@
   export default {
     data() {
       return {
+        Isactive:true,
         playerOptions: {
           // component options
           start: 0,
@@ -55,7 +56,6 @@
     },
     created() {
       $('.body').css('background', '#f6f6f6')
-
     },
     mounted() {
 /*      this.get_video({

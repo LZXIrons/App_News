@@ -85,7 +85,7 @@
         width: 100%
     }
     .el-message-box{
-        width:320px
+        width:300px
     }
     .login_out-box {
         margin: 40px 15px 0;

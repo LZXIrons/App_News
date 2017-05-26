@@ -17,10 +17,7 @@ export default {
     [type.RETURN_DATA](state,return_sign){
         state.return_data=return_sign
     },
-    //切换路由标志
-    [type.CHANGE_ROUTER](state,chang_sign){
-        state.change_router=chang_sign
-    },
+
     //切换栏目动画
     [type.LOADING](state,loading){
         state.loading=loading

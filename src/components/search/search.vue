@@ -2,7 +2,7 @@
     <div>
         <search>
             <mt-header style="background: #d43d3d" slot="search">
-                <mt-button icon="back" @click="$router.push('/news/recommend?nav=__all__')" slot="left">返回</mt-button>
+                <mt-button icon="back" @click="$router.go(-1)" slot="left">返回</mt-button>
                 <mt-button icon="more" slot="right"></mt-button>
             </mt-header>
         </search>

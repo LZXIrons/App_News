@@ -1,48 +1,48 @@
 <template>
     <div>
-        <img src="../../common/img/分享2.png" width="20" height="20" @click="share_show" />
+        <img src="../../common/img/share_2.png" width="20" height="20" @click="share_show" />
 
         <mt-popup class="share_box" v-model="share_s" position="bottom">
             <div class="share_media">
                 <ul>
                     <li>
                         <a>
-                            <img src="../../common/img/人人.png" />
+                            <img src="../../common/img/rr.png" />
                         </a>
                     </li>
                     <li>
                         <a>
-                            <img src="../../common/img/微信.png" />
+                            <img src="../../common/img/wx.png" />
                         </a>
                     </li>
                     <li>
                         <a>
-                            <img src="../../common/img/微博.png" />
+                            <img src="../../common/img/weibo.png" />
                         </a>
                     </li>
                     <li>
                         <a>
-                            <img src="../../common/img/豆瓣.png" />
+                            <img src="../../common/img/db.png" />
                         </a>
                     </li>
                     <li>
                         <a>
-                            <img src="../../common/img/人人.png" />
+                            <img src="../../common/img/rr.png" />
                         </a>
                     </li>
                     <li>
                         <a>
-                            <img src="../../common/img/微信.png" />
+                            <img src="../../common/img/wx.png" />
                         </a>
                     </li>
                     <li>
                         <a>
-                            <img src="../../common/img/微博.png" />
+                            <img src="../../common/img/weibo.png" />
                         </a>
                     </li>
                     <li>
                         <a>
-                            <img src="../../common/img/豆瓣.png" />
+                            <img src="../../common/img/db.png" />
                         </a>
                     </li>
                 </ul>
