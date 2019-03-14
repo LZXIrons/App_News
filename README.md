@@ -1,4 +1,4 @@
-# 2019基于vue和Element,mint的仿新闻App
+# 2018基于vue和Element,mint的仿新闻App
 > 升级为vue@2.16 + Element@1.0.9
 
 [在线DEMO](http://test.yule1684.com:88)
